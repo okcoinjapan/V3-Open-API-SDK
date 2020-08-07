@@ -22,15 +22,11 @@ OKCoin Japan V3 Open Api 利用方法
         AccountAPIService accountAPIService = new AccountAPIServiceImpl(config);
 
         Transfer transfer = new Transfer();
-        transfer.setType("0");
-        transfer.setFrom("6");
-        transfer.setTo("3");
+        transfer.setFrom("1");
+        transfer.setTo("6");
         transfer.setCurrency("JPY");
-        transfer.setAmount("1");
-        //transfer.setSub_account("");
-        //transfer.setInstrument_id("BTC-JPY");
-        //transfer.setTo_instrument_id("BTC-JPY");
-
+        transfer.setAmount("10000");
+        
         JSONObject result = this.accountAPIService.transfer(transfer);
         System.out.println(JSON.toJSONString(result));
  }
