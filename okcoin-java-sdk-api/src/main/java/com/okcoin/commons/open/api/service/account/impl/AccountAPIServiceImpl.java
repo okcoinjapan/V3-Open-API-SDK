@@ -3,7 +3,9 @@ package com.okcoin.commons.open.api.service.account.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.okcoin.commons.open.api.bean.account.param.JpyWithdraw;
 import com.okcoin.commons.open.api.bean.account.param.Transfer;
+import com.okcoin.commons.open.api.bean.account.param.Withdraw;
 import com.okcoin.commons.open.api.bean.account.result.Currency;
 import com.okcoin.commons.open.api.bean.account.result.Wallet;
 import com.okcoin.commons.open.api.bean.account.result.WithdrawFee;
@@ -39,6 +41,16 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject transfer(Transfer transfer) {
         return this.client.executeSync(this.api.transfer(JSONObject.parseObject(JSON.toJSONString(transfer))));
+    }
+
+    @Override
+    public JSONObject withdraw(Withdraw withdraw) {
+        return this.client.executeSync(this.api.withdraw(JSONObject.parseObject(JSON.toJSONString(withdraw))));
+    }
+
+    @Override
+    public JSONObject jpyWithdraw(JpyWithdraw jpyWithdraw) {
+        return this.client.executeSync(this.api.jpyWithdraw(JSONObject.parseObject(JSON.toJSONString(jpyWithdraw))));
     }
 
     @Override
@@ -92,6 +104,11 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getDepositHistory(currency));
     }
 
+    @Override
+    public JSONArray getJpyDepositHistory() {
+        return this.client.executeSync(this.api.getJpyDepositHistory());
+    }
+
     //Query all withdrawal records
     @Override
     public JSONArray getWithdrawalHistory() {
@@ -103,6 +120,12 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONArray getWithdrawalHistory(String currency) {
         return this.client.executeSync(this.api.getWithdrawalHistory(currency));
     }
+
+    @Override
+    public JSONArray getJpyWithdrawalHistory() {
+        return this.client.executeSync(this.api.getJpyWithdrawalHistory());
+    }
+
 
     @Override
     public JSONObject getAllAccount(String account_type) {

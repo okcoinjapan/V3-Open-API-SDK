@@ -29,6 +29,12 @@ public interface AccountAPI {
     @POST("/api/account/v3/transfer")
     Call<JSONObject> transfer(@Body JSONObject jsonObject);
 
+    @POST("/api/account/v3/withdrawal")
+    Call<JSONObject> withdraw(@Body JSONObject jsonObject);
+
+    @POST("/api/account/v3/jpywithdrawal")
+    Call<JSONObject> jpyWithdraw(@Body JSONObject jsonObject);
+
     @GET("/api/account/v3/currencies")
     Call<List<Currency>> getCurrencies();
 
@@ -59,6 +65,9 @@ public interface AccountAPI {
     @GET("/api/account/v3/deposit/history/{currency}")
     Call<JSONArray> getDepositHistory(@Path("currency") String currency);
 
+    @GET("/api/account/v3/jpyDeposit/history")
+    Call<JSONArray> getJpyDepositHistory();
+
     //查询所有币种提币记录 / Query withdrawal records of all currencies
     @GET("/api/account/v3/withdrawal/history")
     Call<JSONArray> getWithdrawalHistory();
@@ -66,6 +75,9 @@ public interface AccountAPI {
     //查询单个提币记录 / Query a single withdrawal record
     @GET("/api/account/v3/withdrawal/history/{currency}")
     Call<JSONArray> getWithdrawalHistory(@Path("currency") String currency);
+
+    @GET("/api/account/v3/jpyWithdrawal/history")
+    Call<JSONArray> getJpyWithdrawalHistory();
 
     //获取账户资产估值 / Get account asset valuation
     @GET("/api/account/v3/asset-valuation")

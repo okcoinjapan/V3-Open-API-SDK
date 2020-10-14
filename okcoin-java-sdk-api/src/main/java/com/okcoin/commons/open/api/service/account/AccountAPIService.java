@@ -2,7 +2,9 @@ package com.okcoin.commons.open.api.service.account;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.okcoin.commons.open.api.bean.account.param.JpyWithdraw;
 import com.okcoin.commons.open.api.bean.account.param.Transfer;
+import com.okcoin.commons.open.api.bean.account.param.Withdraw;
 import com.okcoin.commons.open.api.bean.account.result.Currency;
 import com.okcoin.commons.open.api.bean.account.result.Wallet;
 import com.okcoin.commons.open.api.bean.account.result.WithdrawFee;
@@ -18,6 +20,10 @@ public interface AccountAPIService {
     List<Wallet> getWallet(String currency);
 
     JSONObject transfer(Transfer transfer);
+
+    JSONObject withdraw(Withdraw withdraw);
+
+    JSONObject jpyWithdraw(JpyWithdraw jpyWithdraw);
 
     List<Currency> getCurrencies();
 
@@ -37,9 +43,13 @@ public interface AccountAPIService {
 
     JSONArray getDepositHistory(String currency);
 
+    JSONArray getJpyDepositHistory();
+
     JSONArray getWithdrawalHistory();
 
     JSONArray getWithdrawalHistory(String currency);
+
+    JSONArray getJpyWithdrawalHistory();
 
     JSONObject getAllAccount(String account_type);
 

@@ -2,17 +2,25 @@ package com.okcoin.commons.open.api.test.account;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.okcoin.commons.open.api.bean.account.param.JpyWithdraw;
 import com.okcoin.commons.open.api.bean.account.param.Transfer;
+import com.okcoin.commons.open.api.bean.account.param.Withdraw;
 import com.okcoin.commons.open.api.bean.account.result.Currency;
 import com.okcoin.commons.open.api.bean.account.result.Wallet;
 import com.okcoin.commons.open.api.bean.account.result.WithdrawFee;
 import com.okcoin.commons.open.api.service.account.AccountAPIService;
 import com.okcoin.commons.open.api.service.account.impl.AccountAPIServiceImpl;
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public class AccountAPITests extends AccountAPIBaseTests {
@@ -57,6 +65,39 @@ public class AccountAPITests extends AccountAPIBaseTests {
         transfer.setAmount("1");
 
         JSONObject result = this.accountAPIService.transfer(transfer);
+        this.toResultString(AccountAPITests.LOG, "result", result);
+    }
+
+    /**
+     * 暗号資産出庫
+     * Rate Limit：1 request/10s
+     * POST /api/account/v3/withdrawal
+     */
+    @Test
+    public void withdraw() {
+        Withdraw withdraw = new Withdraw();
+        withdraw.setAmount("0.01");
+        withdraw.setCurrency("BTC");
+        withdraw.setTo_address("17DKe3kkkkiiiiTvAKKi2vMPbm1Bz3CMKw");
+        withdraw.setFee("0.001");
+        withdraw.setTrade_pwd("12345678");
+        withdraw.setReason("1");
+        withdraw.setUsage_agreement("0");
+        JSONObject result = this.accountAPIService.withdraw(withdraw);
+        this.toResultString(AccountAPITests.LOG, "result", result);
+    }
+
+    /**
+     * JPY資産出庫
+     * Rate Limit：1 request/120s
+     * POST /api/account/v3/jpywithdrawal
+     */
+    @Test
+    public void jpyWithdraw() {
+        JpyWithdraw jpyWithdraw = new JpyWithdraw();
+        jpyWithdraw.setAmount("10000");
+        jpyWithdraw.setTrade_pwd("12345678");
+        JSONObject result = this.accountAPIService.jpyWithdraw(jpyWithdraw);
         this.toResultString(AccountAPITests.LOG, "result", result);
     }
 
@@ -112,6 +153,18 @@ public class AccountAPITests extends AccountAPIBaseTests {
     }
 
     /**
+     * 获取所有币种充值记录
+     * 获取所有币种的充值记录，为最近一百条数据。
+     * 限速规则：6次/s
+     * GET /api/account/v3/deposit/history
+     */
+    @Test
+    public void getJpyDepositHistory() {
+        JSONArray result = this.accountAPIService.getJpyDepositHistory();
+        this.toResultString(AccountAPITests.LOG, "result", result);
+    }
+
+    /**
      * 查询所有/单个币种的提币记录
      * 获取所有币种的充值记录，为最近一百条数据。
      * 限速规则：6次/s
@@ -124,6 +177,18 @@ public class AccountAPITests extends AccountAPIBaseTests {
         JSONArray result2 = this.accountAPIService.getWithdrawalHistory("eth");
         this.toResultString(AccountAPITests.LOG, "result", result2);
     }
+
+    /**
+     * JPY出金履歴の取得
+     * Rate Limit：6 request/1s
+     * GET /api/account/v3/jpyWithdrawal/history
+     */
+    @Test
+    public void getJpyWithdrawalHistory() {
+        JSONArray result = this.accountAPIService.getJpyWithdrawalHistory();
+        this.toResultString(AccountAPITests.LOG, "result", result);
+    }
+
 
     /**
      * 获取币种列表

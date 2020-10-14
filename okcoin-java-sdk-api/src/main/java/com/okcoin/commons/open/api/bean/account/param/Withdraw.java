@@ -5,20 +5,22 @@ public class Withdraw {
 
     private String currency;
 
+    private String to_address;
+
+    private String trade_pwd;
+
+    private String fee;
+
+    private String reason;
+
+    private String usage_agreement;
+
     public String getAmount() {
         return amount;
     }
 
     public void setAmount(String amount) {
         this.amount = amount;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public String getFee() {
@@ -29,17 +31,15 @@ public class Withdraw {
         this.fee = fee;
     }
 
-    private String destination;
+    public String getReason() { return reason; }
 
-    private String to_address;
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
-    private String trade_pwd;
+    public String getUsage_agreement() { return usage_agreement; }
 
-    private String fee;
-
-    private String tag;
-
-
+    public void setUsage_agreement(String usage_agreement) { this.usage_agreement = usage_agreement; }
 
     public String getCurrency() {
         return currency;
@@ -57,8 +57,6 @@ public class Withdraw {
         this.trade_pwd = trade_pwd;
     }
 
-
-
     public String getTo_address() {
         return to_address;
     }
@@ -67,11 +65,4 @@ public class Withdraw {
         this.to_address = to_address;
     }
 
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
 }
