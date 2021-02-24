@@ -6,5 +6,7 @@
 |list|language|
 |---|---|
 |okcoin-java-sdk-api|Java|
+|okcoin-python-sdk-api|Python|
 
-API Support: https://www.okcoin.jp/account/inquiryForm
+- API Document: https://dev.okcoin.jp/en/
+- API Support: https://www.okcoin.jp/account/inquiryForm

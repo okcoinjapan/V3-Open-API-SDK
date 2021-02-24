@@ -14,6 +14,7 @@ OKCoin Japan V3 Open Api 利用方法
         config.setSecretKey("");
         config.setPassphrase("");
         config.setPrint(true);
+        config.setI18n(I18nEnum.ENGLISH);
 
         GeneralAPIService marketAPIService = new GeneralAPIServiceImpl(config);
         ServerTime time = marketAPIService.getServerTime();
