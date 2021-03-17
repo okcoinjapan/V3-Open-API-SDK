@@ -1,5 +1,7 @@
 OKCoin Japan V3 Open Api 利用方法
 --------------
+```mvn clean package -Dmaven.test.skip=true```を実行して、生成した```okcoin-java-sdk-api-1.0.0-jar-with-dependencies.jar```を利用してください。
+
 ### 1.使用するライブラリ： okhttp3 + retrofit2
 
 ### 2.Javaアプリケーションにおける使用例
