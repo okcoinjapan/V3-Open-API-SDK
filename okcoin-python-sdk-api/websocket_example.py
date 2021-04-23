@@ -36,9 +36,6 @@ passphrase = ''
 # 公共-400档深度频道
 # channels = ["spot/depth:BTC-JPY"]
 
-# Public-400Depth Incremental Data
-# 公共-400档增量数据频道
-# channels = ["spot/depth_l2_tbt:BTC-JPY"]
 
 loop = asyncio.get_event_loop()
 

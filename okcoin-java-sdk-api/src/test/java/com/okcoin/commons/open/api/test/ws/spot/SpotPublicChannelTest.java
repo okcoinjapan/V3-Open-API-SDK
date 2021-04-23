@@ -133,24 +133,5 @@ public class SpotPublicChannelTest {
         }
     }
 
-    /**
-     * 公共-400档增量数据频道
-     * Depth Channel
-     */
-    @Test
-    public void allDepthChannel() {
-        //リストを作成し、講読したいチャンネルを追加します。
-        final ArrayList<String> list = new ArrayList<>();
-        list.add("spot/depth_l2_tbt:BTC-JPY");
-        webSocketClient.subscribe(list);
-        //テストを終了しないようにするため、スリープさせます。
-        try {
-            Thread.sleep(10000000);
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
 }

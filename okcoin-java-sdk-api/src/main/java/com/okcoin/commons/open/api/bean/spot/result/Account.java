@@ -2,7 +2,6 @@ package com.okcoin.commons.open.api.bean.spot.result;
 
 public class Account {
 
-    private String id;
     private String currency;
     private String balance;
     private String available;
@@ -14,14 +13,6 @@ public class Account {
 
     public void setHold(final String hold) {
         this.hold = hold;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(final String id) {
-        this.id = id;
     }
 
     public String getCurrency() {
@@ -52,8 +43,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "id='" + id + '\'' +
-                ", currency='" + currency + '\'' +
+                "currency='" + currency + '\'' +
                 ", balance='" + balance + '\'' +
                 ", available='" + available + '\'' +
                 ", hold='" + hold + '\'' +

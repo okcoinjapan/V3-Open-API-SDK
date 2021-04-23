@@ -45,12 +45,6 @@ func TestPublicChannels(t *testing.T) {
 	// agent.UnSubscribe(CHNL_SPOT_DEPTH, "BTC-JPY")
 	// time.Sleep(1 * time.Second)
 
-	// Public-400Depth Incremental Data
-	// agent.Subscribe(CHNL_SPOT_DEPTH_L2_TBT, "BTC-JPY", DefaultDataCallBack)
-	// time.Sleep(1 * time.Minute)
-	// agent.UnSubscribe(CHNL_SPOT_DEPTH_L2_TBT, "BTC-JPY")
-	// time.Sleep(1 * time.Second)
-
 	agent.Stop()
 }
 
