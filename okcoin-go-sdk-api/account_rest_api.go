@@ -217,8 +217,8 @@ func (client *Client) GetAccountDepositHistoryByCurrency(currency string) (*[]ma
  Limit: 20 requests per 2 seconds
  GET Request: /api/account/v3/ledger
 */
-func (client *Client) GetAccountLeger(optionalParams *map[string]string) (*[]map[string]string, error) {
-	r := []map[string]string{}
+func (client *Client) GetAccountLeger(optionalParams *map[string]string) (*[]map[string]interface{}, error) {
+	r := []map[string]interface{}{}
 	uri := ACCOUNT_LEDGER
 	if optionalParams != nil && len(*optionalParams) > 0 {
 		uri = BuildParams(uri, *optionalParams)
