@@ -116,7 +116,7 @@ func TestGetAccountWalletByCurrency(t *testing.T) {
  POST Request: /api/account/v3/withdrawal
 */
 func TestPostAccountWithdrawal(t *testing.T) {
-	NewTestClient().PostAccountWithdrawal("BTC", "0.001", "", "", "0.0005", "1", "1")
+	NewTestClient().PostAccountWithdrawal("BTC", "-1", "0.001", "", "", "0.0005", "1", "1")
 }
 
 /*

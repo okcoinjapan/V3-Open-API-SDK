@@ -5,6 +5,8 @@ public class Withdraw {
 
     private String currency;
 
+    private String destination;
+
     private String to_address;
 
     private String trade_pwd;
@@ -35,6 +37,14 @@ public class Withdraw {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public String getUsage_agreement() { return usage_agreement; }

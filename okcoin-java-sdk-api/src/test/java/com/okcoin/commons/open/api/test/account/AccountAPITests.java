@@ -78,6 +78,7 @@ public class AccountAPITests extends AccountAPIBaseTests {
         Withdraw withdraw = new Withdraw();
         withdraw.setAmount("0.01");
         withdraw.setCurrency("BTC");
+        withdraw.setDestination("-1");
         withdraw.setTo_address("17DKe3kkkkiiiiTvAKKi2vMPbm1Bz3CMKw");
         withdraw.setFee("0.001");
         withdraw.setTrade_pwd("12345678");

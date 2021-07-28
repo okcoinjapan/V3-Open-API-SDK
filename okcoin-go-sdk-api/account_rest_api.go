@@ -236,12 +236,13 @@ func (client *Client) GetAccountLeger(optionalParams *map[string]string) (*[]map
  POST Request: /api/account/v3/withdrawal
 */
 func (client *Client) PostAccountWithdrawal(
-	currency, amount, to_address, trade_pwd, fee, reason, usage_agreement string) (*map[string]interface{}, error) {
+	currency, destination, amount, to_address, trade_pwd, fee, reason, usage_agreement string) (*map[string]interface{}, error) {
 
 	r := map[string]interface{}{}
 
 	withdrawlInfo := map[string]interface{}{}
 	withdrawlInfo["currency"] = currency
+	withdrawlInfo["destination"] = destination
 	withdrawlInfo["amount"] = amount
 	withdrawlInfo["to_address"] = to_address
 	withdrawlInfo["trade_pwd"] = trade_pwd
