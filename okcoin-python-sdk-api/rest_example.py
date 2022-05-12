@@ -49,7 +49,7 @@ accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
     Limit: 1 requests per 10 seconds
     POST Request: /api/account/v3/withdrawal
 """
-# result = accountAPI.coin_withdraw(currency='BTC', destination='-1', amount='', to_address='', trade_pwd='', fee='', reason='1', usage_agreement='0')
+# result = accountAPI.coin_withdraw(currency='PLT', destination='-1', amount='', to_address='', trade_pwd='', fee='', chain='Ethereum(ePLT)', reason='1', usage_agreement='0')
 
 """ Withdrawal History
     Limit: 6 requests per second

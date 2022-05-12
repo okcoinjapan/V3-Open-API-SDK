@@ -81,6 +81,7 @@ public class AccountAPITests extends AccountAPIBaseTests {
         withdraw.setDestination("-1");
         withdraw.setTo_address("17DKe3kkkkiiiiTvAKKi2vMPbm1Bz3CMKw");
         withdraw.setFee("0.001");
+        withdraw.setChain("");
         withdraw.setTrade_pwd("12345678");
         withdraw.setReason("1");
         withdraw.setUsage_agreement("0");

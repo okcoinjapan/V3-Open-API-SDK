@@ -13,6 +13,8 @@ public class Withdraw {
 
     private String fee;
 
+    private String chain;
+
     private String reason;
 
     private String usage_agreement;
@@ -75,4 +77,11 @@ public class Withdraw {
         this.to_address = to_address;
     }
 
+    public String getChain() {
+        return chain;
+    }
+
+    public void setChain(String chain) {
+        this.chain = chain;
+    }
 }

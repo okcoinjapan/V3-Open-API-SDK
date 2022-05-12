@@ -4,12 +4,11 @@ import java.math.BigDecimal;
 
 public class WithdrawFee {
 
-      private BigDecimal min_fee;
+    private BigDecimal min_fee;
 
-      private BigDecimal max_fee;
-
-
-      private String currency;
+    private BigDecimal max_fee;
+    private String chain;
+    private String currency;
 
     public BigDecimal getMin_fee() {
         return min_fee;
@@ -35,11 +34,20 @@ public class WithdrawFee {
         this.currency = currency;
     }
 
+    public String getChain() {
+        return chain;
+    }
+
+    public void setChain(String chain) {
+        this.chain = chain;
+    }
+
     @Override
     public String toString() {
         return "WithdrawFee{" +
                 "min_fee=" + min_fee +
                 ", max_fee=" + max_fee +
+                ", chain=" + chain +
                 ", currency='" + currency + '\'' +
                 '}';
     }

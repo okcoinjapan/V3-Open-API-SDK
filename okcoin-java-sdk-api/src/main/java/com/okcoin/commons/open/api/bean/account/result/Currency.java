@@ -7,6 +7,8 @@ public class Currency {
 
     private String name;
 
+    private String chain;
+
     private Integer can_withdraw;
 
     private Integer can_deposit;
@@ -51,5 +53,13 @@ public class Currency {
 
     public void setMin_withdrawal(BigDecimal min_withdrawal) {
         this.min_withdrawal = min_withdrawal;
+    }
+
+    public String getChain() {
+        return chain;
+    }
+
+    public void setChain(String chain) {
+        this.chain = chain;
     }
 }
