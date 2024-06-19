@@ -16,6 +16,10 @@ passphrase = ''
 # 用户交易频道
 # channels = ["spot/order:BTC-JPY"]
 
+# User Algo Orders
+# 用户委托策略频道
+# channels = ["spot/order_algo:BTC-JPY"]
+
 # Public-Ticker
 # 公共-Ticker频道
 # channels = ["spot/ticker:BTC-JPY"]

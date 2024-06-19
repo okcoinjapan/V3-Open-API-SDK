@@ -1,8 +1,12 @@
 package com.okcoin.commons.open.api.test.spot;
 
+import com.okcoin.commons.open.api.bean.spot.param.CancelAlgoParam;
+import com.okcoin.commons.open.api.bean.spot.param.OrderAlgoParam;
 import com.okcoin.commons.open.api.bean.spot.param.OrderParamDto;
 import com.okcoin.commons.open.api.bean.spot.param.PlaceOrderParam;
+import com.okcoin.commons.open.api.bean.spot.result.CancelAlgoResult;
 import com.okcoin.commons.open.api.bean.spot.result.Fills;
+import com.okcoin.commons.open.api.bean.spot.result.OrderAlgoResult;
 import com.okcoin.commons.open.api.bean.spot.result.OrderInfo;
 import com.okcoin.commons.open.api.bean.spot.result.OrderResult;
 import com.okcoin.commons.open.api.bean.spot.result.PendingOrdersInfo;
@@ -251,4 +255,62 @@ public class SpotOrderAPITest extends SpotAPIBaseTests {
         this.toResultString(SpotOrderAPITest.LOG, "fillsList", fillsList);
     }
 
+    /**
+     * 策略委托下单
+     * POST /api/spot/v3/order_algo
+     * 限速规则：40次/2s
+     */
+    @Test
+    public void addOrderAlgo() {
+        final OrderAlgoParam order = new OrderAlgoParam();
+        //公共参数
+        order.setInstrument_id("ETH-JPY");
+        order.setMode("1");
+        order.setOrder_type("5");
+        order.setSize("0.1");
+        order.setSide("sell");
+
+        //止盈止损参数
+        order.setTp_trigger_price("487600");
+        order.setTp_price("487601");
+        order.setTp_trigger_type("1");
+        order.setSl_trigger_price("487300");
+        order.setSl_price("487299");
+        order.setSl_trigger_type("1");
+
+        final OrderAlgoResult orderAlgoResult = this.spotOrderAPIServive.addOrderAlgo(order);
+        this.toResultString(SpotOrderAPITest.LOG, "orders", orderAlgoResult);
+    }
+
+    /**
+     * 策略委托撤单
+     * 根据指定的algo_id撤销某个币的未完成订单，每次最多可撤10个。
+     * POST /api/spot/v3/cancel_batch_algos
+     * 限速规则：20 次/2s
+     */
+    @Test
+    public void cancelOrderAlgo(){
+        final CancelAlgoParam cancelAlgoParam = new CancelAlgoParam();
+        List<String> ids = new ArrayList<>();
+        ids.add("7992019908149248");
+        ids.add("7988108725761024");
+        cancelAlgoParam.setInstrument_id("ETH-JPY");
+        cancelAlgoParam.setOrder_type("5");
+        cancelAlgoParam.setAlgo_ids(ids);
+        final CancelAlgoResult cancelAlgoResult = this.spotOrderAPIServive.cancelOrderAlgo(cancelAlgoParam);
+        this.toResultString(SpotOrderAPITest.LOG, "cancelOrder", cancelAlgoResult);
+
+    }
+
+    /**
+     * 获取委托单列表
+     * 列出您当前所有的订单信息。
+     * GET /api/spot/v3/algo
+     * 限速规则：20次/2s
+     */
+    @Test
+    public void getAlgoOrder(){
+        final Map<String, Object> findAlgOrderResults = this.spotOrderAPIServive.getAlgoOrder("ETH-JPY", "5", null, "", null, null, null);
+        this.toResultString(SpotOrderAPITest.LOG, "getAlgoOrderResults", findAlgOrderResults);
+    }
 }

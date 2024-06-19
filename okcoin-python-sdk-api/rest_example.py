@@ -189,6 +189,24 @@ spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
 """
 # result = spotAPI.get_fills(instrument_id='BTC-JPY', order_id='', after='', before='', limit='')
 
+""" Place Algo Order
+    Limit: 40 requests per 2 seconds
+    POST Request: /api/spot/v3/order_algo
+"""
+# result = spotAPI.take_order_algo(instrument_id='ETH-JPY', mode='1', order_type='5', size='0.1', side='sell', tp_trigger_price='487600', tp_price='487601', tp_trigger_type='1', sl_trigger_type='1', sl_trigger_price='4', sl_price='3')
+
+""" Cancel Algo Order
+    Limit: 20 requests per 2 seconds
+    POST Request: /api/spot/v3/cancel_batch_algos
+"""
+# result = spotAPI.cancel_algos(instrument_id='ETH-JPY', algo_ids=['7992531393232896'], order_type='5')
+
+""" Get Algo Order List
+    Limit: 20 requests per 2 seconds
+    GET Request: /api/spot/v3/algo
+"""
+# result = spotAPI.get_order_algos(instrument_id='ETH-JPY', order_type='5', status='1', algo_id='', before='', after='', limit='')
+
 """ Trade Fee
     Limit: 1 requests per 10 seconds
     GET Request: /api/spot/v3/trade_fee

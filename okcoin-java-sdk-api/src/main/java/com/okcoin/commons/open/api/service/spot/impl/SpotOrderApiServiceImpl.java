@@ -1,5 +1,7 @@
 package com.okcoin.commons.open.api.service.spot.impl;
 
+import com.okcoin.commons.open.api.bean.spot.param.CancelAlgoParam;
+import com.okcoin.commons.open.api.bean.spot.param.OrderAlgoParam;
 import com.okcoin.commons.open.api.bean.spot.param.OrderParamDto;
 import com.okcoin.commons.open.api.bean.spot.param.PlaceOrderParam;
 import com.okcoin.commons.open.api.bean.spot.result.*;
@@ -94,5 +96,18 @@ public class SpotOrderApiServiceImpl implements SpotOrderAPIServive {
         return this.client.executeSync(this.spotOrderAPI.getFills(order_id, instrument_id, before, after, limit));
     }
 
+    @Override
+    public OrderAlgoResult addOrderAlgo(OrderAlgoParam order) {
+        return this.client.executeSync(this.spotOrderAPI.addOrderAlgo(order));
+    }
 
+    @Override
+    public CancelAlgoResult cancelOrderAlgo(CancelAlgoParam cancelAlgoParam) {
+        return this.client.executeSync(this.spotOrderAPI.cancelOrderAlgo(cancelAlgoParam));
+    }
+
+    @Override
+    public Map<String, Object> getAlgoOrder(final String instrument_id, final String order_type, final String status, final String algo_id, final String before, final String after, final String limit) {
+        return this.client.executeSync(this.spotOrderAPI.getAlgoOrder(instrument_id, order_type, status, algo_id, before, after, limit));
+    }
 }

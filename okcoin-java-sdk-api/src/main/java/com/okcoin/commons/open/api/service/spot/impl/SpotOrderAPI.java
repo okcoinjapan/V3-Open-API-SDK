@@ -1,5 +1,7 @@
 package com.okcoin.commons.open.api.service.spot.impl;
 
+import com.okcoin.commons.open.api.bean.spot.param.CancelAlgoParam;
+import com.okcoin.commons.open.api.bean.spot.param.OrderAlgoParam;
 import com.okcoin.commons.open.api.bean.spot.param.OrderParamDto;
 import com.okcoin.commons.open.api.bean.spot.param.PlaceOrderParam;
 import com.okcoin.commons.open.api.bean.spot.result.*;
@@ -155,5 +157,39 @@ public interface SpotOrderAPI {
                                @Query("after") String after,
                                @Query("limit") String limit);
 
+    /**
+     * 策略委托下单
+     * @param order
+     * @return
+     */
+    @POST("api/spot/v3/order_algo")
+    Call<OrderAlgoResult> addOrderAlgo(@Body OrderAlgoParam order);
 
+    /**
+     * 策略委托撤单
+     * @param cancelAlgoParam
+     * @return
+     */
+    @POST("api/spot/v3/cancel_batch_algos")
+    Call<CancelAlgoResult> cancelOrderAlgo(@Body CancelAlgoParam cancelAlgoParam);
+
+    /**
+     * 查看策略委托订单
+     * @param instrument_id
+     * @param order_type
+     * @param status
+     * @param algo_id
+     * @param before
+     * @param after
+     * @param limit
+     * @return
+     */
+    @GET("/api/spot/v3/algo")
+    Call<Map<String, Object>> getAlgoOrder(@Query("instrument_id") String instrument_id,
+                              @Query("order_type") String order_type,
+                              @Query("status") String status,
+                              @Query("algo_id") String algo_id,
+                              @Query("before") String before,
+                              @Query("after") String after,
+                              @Query("limit") String limit);
 }

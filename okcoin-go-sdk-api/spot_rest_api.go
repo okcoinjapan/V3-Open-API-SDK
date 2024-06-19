@@ -349,3 +349,64 @@ func (client *Client) PostSpotCancelBatchOrders(orderInfos *[]map[string]interfa
 	}
 	return &r, nil
 }
+
+/*
+ Place Algo Order
+ Limit: 40 requests per 2 seconds
+ POST Request: /api/spot/v3/order_algo
+*/
+func (client *Client) PostSpotOrderAlgo(instrument_id string, optionalOrderInfo *map[string]string) (result *map[string]interface{}, err error) {
+
+	r := map[string]interface{}{}
+	postParams := NewParams()
+	postParams["instrument_id"] = instrument_id
+	postParams["side"] = (*optionalOrderInfo)["side"]
+
+	if optionalOrderInfo != nil && len(*optionalOrderInfo) > 0 {
+		for k, v := range *optionalOrderInfo {
+			postParams[k] = v
+		}
+	}
+
+	if _, err := client.Request(POST, SPOT_ORDER_ALGO, postParams, &r); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
+/*
+ Get Algo Order List
+ Limit: 20 requests per 2 seconds
+ GET Request: /api/spot/v3/algo
+*/
+func (client *Client) GetOrdersAlgo(instrument_id string, options *map[string]string) (*[]map[string]interface{}, error) {
+	r := []map[string]interface{}{}
+
+	fullOptions := NewParams()
+	fullOptions["instrument_id"] = instrument_id
+	if options != nil && len(*options) > 0 {
+		for k, v := range *options {
+			fullOptions[k] = v
+		}
+	}
+
+	uri := BuildParams(SPOT_GET_ORDER_ALGOS, fullOptions)
+
+	if _, err := client.Request(GET, uri, nil, &r); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
+/*
+ Cancel Algo Order
+ Limit: 20 requests per 2 seconds
+ POST Request: /api/spot/v3/cancel_batch_algos
+*/
+func (client *Client) PostCancelOrdersAlgo(orderInfos *map[string]interface{}) (*map[string]interface{}, error) {
+	r := map[string]interface{}{}
+	if _, err := client.Request(POST, SPOT_CANCEL_ALGOS, orderInfos, &r); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}

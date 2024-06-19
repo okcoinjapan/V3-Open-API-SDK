@@ -20,11 +20,12 @@ const (
 	CHNL_SPOT_DEPTH         = "spot/depth"         // 深度数据频道，首次200档，后续增量
 	CHNL_SPOT_DEPTH5        = "spot/depth5"        // 深度数据频道，每次返回前5档
 
-	CHNL_SPOT_ACCOUNT = "spot/account" // 用户币币账户信息频道
-	CHNL_SPOT_ORDER   = "spot/order"   // 用户交易数据频道
+	CHNL_SPOT_ACCOUNT       = "spot/account"       // 用户币币账户信息频道
+	CHNL_SPOT_ORDER         = "spot/order"         // 用户交易数据频道
+	CHNL_SPOT_ORDER_ALGO    = "spot/order_algo"    // 用户委托策略频道
 
-	CHNL_EVENT_SUBSCRIBE   = "subscribe"
-	CHNL_EVENT_UNSUBSCRIBE = "unsubscribe"
+	CHNL_EVENT_SUBSCRIBE    = "subscribe"
+	CHNL_EVENT_UNSUBSCRIBE  = "unsubscribe"
 )
 
 var (

@@ -140,6 +140,53 @@ func TestGetSpotFills(t *testing.T) {
 }
 
 /*
+ Place Algo Order
+ Limit: 40 requests per 2 seconds
+ POST Request: /api/spot/v3/order_algo
+*/
+func TestPostSpotOrderAlgo(t *testing.T) {
+	options := NewParams()
+	options["mode"] = "1"
+	options["order_type"] = "5"
+	options["size"] = "0.1"
+	options["side"] = "sell"
+	// stop order
+	options["tp_trigger_price"] = "487600"
+	options["tp_price"] = "487601"
+	options["tp_trigger_type"] = "1"
+	options["sl_trigger_price"] = "487400"
+	options["sl_price"] = "487399"
+	options["sl_trigger_type"] = "1"
+	NewTestClient().PostSpotOrderAlgo("ETH-JPY", &options)
+}
+
+/*
+ Cancel Algo Order
+ Limit: 20 requests per 2 seconds
+ POST Request: /api/spot/v3/cancel_batch_algos
+*/
+func TestPostCancelOrdersAlgo(t *testing.T) {
+	orderInfos := map[string]interface{}{"instrument_id": "ETH-JPY", "algo_ids": []string{"7992301834846208","7992837031837696"}, "order_type": "5"}
+	NewTestClient().PostCancelOrdersAlgo(&orderInfos)
+}
+
+/*
+ Get Algo Order List
+ Limit: 20 requests per 2 seconds
+ GET Request: /api/spot/v3/algo
+*/
+func TestGetOrdersAlgo(t *testing.T) {
+	options := map[string]string{}
+	options["order_type"] = "5"
+	options["status"] = ""
+	options["algo_id"] = ""
+	options["before"] = ""
+	options["after"] = ""
+	options["limit"] = ""
+	NewTestClient().GetOrdersAlgo("ETH-JPY", &options)
+}
+
+/*
  Trade Fee
  Limit: 1 requests per 10 seconds
  GET Request: /api/spot/v3/trade_fee

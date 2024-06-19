@@ -87,4 +87,21 @@ public class SpotPrivateChannelTest {
         }
     }
 
+    /**
+     * 用户委托策略频道
+     * Order Channel
+     */
+    @Test
+    public void algoOrderChannel() {
+        //创建一个list集合，添加要订阅的频道名称
+        final ArrayList<String> list = new ArrayList<>();
+        list.add("spot/order_algo:ETH-JPY");
+        webSocketClient.subscribe(list);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (final Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

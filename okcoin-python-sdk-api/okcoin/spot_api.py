@@ -80,6 +80,65 @@ class SpotAPI(Client):
             params['limit'] = limit
         return self._request_with_params(GET, SPOT_FILLS, params, cursor=True)
 
+    # take order_algo
+    def take_order_algo(self, instrument_id, mode, order_type, size, side, trigger_price='', algo_price='', algo_type='',
+                        callback_rate='', algo_variance='', avg_amount='', limit_price='', sweep_range='',
+                        sweep_ratio='', single_limit='', time_interval='',tp_trigger_price='',tp_price='',
+                        tp_trigger_type='',sl_trigger_type='',sl_trigger_price='',sl_price='',):
+        params = {'instrument_id': instrument_id, 'mode': mode, 'order_type': order_type, 'size': size, 'side': side}
+        if order_type == '1':  # 计划委托参数
+            params['trigger_price'] = trigger_price
+            params['algo_price'] = algo_price
+            if algo_type:
+                params['algo_type'] = algo_type
+        elif order_type == '2':  # 跟踪委托参数
+            params['callback_rate'] = callback_rate
+            params['trigger_price'] = trigger_price
+        elif order_type == '3':  # 冰山委托参数（最多同时存在6单）
+            params['algo_variance'] = algo_variance
+            params['avg_amount'] = avg_amount
+            params['limit_price'] = limit_price
+        elif order_type == '4':  # 时间加权参数（最多同时存在6单）
+            params['sweep_range'] = sweep_range
+            params['sweep_ratio'] = sweep_ratio
+            params['single_limit'] = single_limit
+            params['limit_price'] = limit_price
+            params['time_interval'] = time_interval
+        elif order_type == '5':  # 止盈止损参数（最多同时存在6单）
+            if tp_trigger_type:
+                params['tp_trigger_type'] = tp_trigger_type
+            if tp_trigger_price:
+                params['tp_trigger_price'] = tp_trigger_price
+            if tp_price:
+                params['tp_price'] = tp_price
+            if sl_price:
+                params['sl_price'] = sl_price
+            if sl_trigger_price:
+                params['sl_trigger_price'] = sl_trigger_price
+            if sl_trigger_type:
+                params['sl_trigger_type'] = sl_trigger_type
+        return self._request_with_params(POST, SPOT_ORDER_ALGO, params)
+
+    # cancel_algos
+    def cancel_algos(self, instrument_id, algo_ids, order_type):
+        params = {'instrument_id': instrument_id, 'algo_ids': algo_ids, 'order_type': order_type}
+        return self._request_with_params(POST, SPOT_CANCEL_ALGOS, params)
+
+    # get order_algos
+    def get_order_algos(self, instrument_id, order_type, status='', algo_id='', before='', after='', limit=''):
+        params = {'instrument_id': instrument_id, 'order_type': order_type}
+        if status:
+            params['status'] = status
+        elif algo_id:
+            params['algo_id'] = algo_id
+        if before:
+            params['before'] = before
+        if after:
+            params['after'] = after
+        if limit:
+            params['limit'] = limit
+        return self._request_with_params(GET, SPOT_GET_ORDER_ALGOS, params)
+
     def get_trade_fee(self):
         return self._request_without_params(GET, SPOT_TRADE_FEE)
 

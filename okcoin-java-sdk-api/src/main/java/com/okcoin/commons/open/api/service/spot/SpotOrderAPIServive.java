@@ -1,5 +1,7 @@
 package com.okcoin.commons.open.api.service.spot;
 
+import com.okcoin.commons.open.api.bean.spot.param.CancelAlgoParam;
+import com.okcoin.commons.open.api.bean.spot.param.OrderAlgoParam;
 import com.okcoin.commons.open.api.bean.spot.param.OrderParamDto;
 import com.okcoin.commons.open.api.bean.spot.param.PlaceOrderParam;
 import com.okcoin.commons.open.api.bean.spot.result.*;
@@ -104,5 +106,32 @@ public interface SpotOrderAPIServive {
      * @return
      */
     List<Fills> getFills(String order_id, String instrument_id, String before, String after, String limit);
+
+    /**
+     * 委托下单
+     * @param order
+     * @return
+     */
+    OrderAlgoResult addOrderAlgo(OrderAlgoParam order);
+
+    /**
+     * 委托策略撤单
+     * @param cancelAlgoParam
+     * @return
+     */
+    CancelAlgoResult cancelOrderAlgo(CancelAlgoParam cancelAlgoParam);
+
+    /**
+     * 查询委托订单
+     * @param instrument_id
+     * @param order_type
+     * @param status
+     * @param algo_id
+     * @param before
+     * @param after
+     * @param limit
+     * @return
+     */
+    Map<String, Object> getAlgoOrder(String instrument_id, String order_type, String status, String algo_id, String before, String after, String limit);
 
 }

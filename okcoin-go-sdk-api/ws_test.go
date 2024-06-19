@@ -69,6 +69,12 @@ func TestPrivateChannels(t *testing.T) {
 	// agent.UnSubscribe(CHNL_SPOT_ORDER, "BTC-JPY")
 	// time.Sleep(1 * time.Second)
 
+	// User Algo Orders
+	// agent.Subscribe(CHNL_SPOT_ORDER_ALGO, "BTC-JPY", DefaultDataCallBack)
+	// time.Sleep(1 * time.Minute)
+	// agent.UnSubscribe(CHNL_SPOT_ORDER_ALGO, "BTC-JPY")
+	// time.Sleep(1 * time.Second)
+
 	agent.Stop()
 }
 
