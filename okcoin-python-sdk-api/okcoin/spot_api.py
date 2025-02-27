@@ -142,6 +142,12 @@ class SpotAPI(Client):
     def get_trade_fee(self):
         return self._request_without_params(GET, SPOT_TRADE_FEE)
 
+    def get_trade_fee_by_instrumentId(self, instrument_id):
+        params = {'instrument_id': instrument_id}
+        if instrument_id:
+            params['instrument_id'] = instrument_id
+        return self._request_without_params(GET, SPOT_TRADE_FEE_BY_INSTRUMENTID)
+
     # query spot coin info
     def get_coin_info(self):
         return self._request_without_params(GET, SPOT_COIN_INFO)

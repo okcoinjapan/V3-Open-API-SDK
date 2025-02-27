@@ -1,6 +1,7 @@
 package com.okcoin.commons.open.api.test.spot;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.okcoin.commons.open.api.bean.spot.result.Account;
 import com.okcoin.commons.open.api.bean.spot.result.ServerTimeDto;
@@ -87,10 +88,14 @@ public class SpotAccountAPITest extends SpotAPIBaseTests {
      * **/
     @Test
     public void testGetTradefee(){
-        JSONObject result = spotAccountAPIService.getTradeFee();
+        JSONArray result = spotAccountAPIService.getTradeFee();
         this.toResultString(SpotAccountAPITest.LOG, "result", result);
 
     }
 
-
+    @Test
+    public void testGetTradefeeByInstrumentId(){
+        JSONObject result = spotAccountAPIService.getTradeFeeByInstrumentId("btc_jpy");
+        this.toResultString(SpotAccountAPITest.LOG, "result", result);
+    }
 }

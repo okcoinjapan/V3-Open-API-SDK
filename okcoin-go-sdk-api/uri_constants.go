@@ -34,6 +34,7 @@ const (
 	SPOT_CANCEL_ALGOS             = "/api/spot/v3/cancel_batch_algos"
 	SPOT_GET_ORDER_ALGOS          = "/api/spot/v3/algo"
 	SPOT_TRADE_FEE                = "/api/spot/v3/trade_fee"
+	SPOT_TRADE_FEE_BY_INSTRUMENTID= "/api/spot/v3/trade_fee_by_instrumentId"
 	SPOT_INSTRUMENTS              = "/api/spot/v3/instruments"
 	SPOT_INSTRUMENT_BOOK          = "/api/spot/v3/instruments/{instrument_id}/book"
 	SPOT_INSTRUMENTS_TICKER       = "/api/spot/v3/instruments/ticker"

@@ -65,6 +65,7 @@ public interface SpotAccountAPI {
 
     //当前账户交易手续等级的费率 / The fee rate of the current account transaction level
     @GET("/api/spot/v3/trade_fee")
-    Call<JSONObject> getTradeFee();
-
+    Call<JSONArray> getTradeFee();
+    @GET("/api/spot/v3/trade_fee_by_instrumentId")
+    Call<JSONObject> getTradeFeeByInstrumentId(@Query("instrument_id")String instrumentId);
 }

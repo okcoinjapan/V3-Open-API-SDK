@@ -160,6 +160,24 @@ func (client *Client) GetSpotTradeFee() (*[]map[string]string, error) {
 	}
 	return &r, nil
 }
+/*
+ Trade Fee By InstrumentId
+ Limit: 1 requests per 10 seconds
+ GET Request: /api/spot/v3/trade_fee_by_instrumentId
+*/
+func (client *Client) GetSpotTradeFeeByInstrumentId(instrumentId string) (*[]map[string]string, error) {
+
+	r := []map[string]string{}
+
+    options := NewParams()
+	options["instrument_id"] = instrumentId
+	uri = BuildParams(SPOT_TRADE_FEE_BY_INSTRUMENTID, options)
+
+	if _, err := client.Request(GET, uri, nil, &r); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
 
 /*
  Public - Trading Pairs
