@@ -67,4 +67,9 @@ public interface SpotAccountAPI {
     @GET("/api/spot/v3/trade_fee")
     Call<JSONObject> getTradeFee();
 
+    @GET("/api/spot/v3/trade_fee_all")
+    Call<JSONArray> getTradeFeeAll();
+
+    @GET("/api/spot/v3/trade_fee/{instrument_id}")
+    Call<JSONObject> getTradeFeeByInstrumentId(@Path("instrument_id")String instrumentId);
 }

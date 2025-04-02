@@ -1,6 +1,7 @@
 package com.okcoin.commons.open.api.test.spot;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.okcoin.commons.open.api.bean.spot.result.Account;
 import com.okcoin.commons.open.api.bean.spot.result.ServerTimeDto;
@@ -79,7 +80,7 @@ public class SpotAccountAPITest extends SpotAPIBaseTests {
     }
 
     /**
-     * 获取当前账户费率
+     * 获取当前账户费率旧
      * 获取您当前账户交易等级对应的手续费费率，母账户下的子账户的费率和母账户一致。每天凌晨0点更新一次
      * 限速规则：1次/10s
      * GET /api/spot/v3/trade_fee
@@ -92,5 +93,16 @@ public class SpotAccountAPITest extends SpotAPIBaseTests {
 
     }
 
+    @Test
+    public void testGetTradefeeAll(){
+        JSONArray result = spotAccountAPIService.getTradeFeeAll();
+        this.toResultString(SpotAccountAPITest.LOG, "result", result);
 
+    }
+
+    @Test
+    public void testGetTradefeeByInstrumentId(){
+        JSONObject result = spotAccountAPIService.getTradeFeeByInstrumentId("BTC-JPY");
+        this.toResultString(SpotAccountAPITest.LOG, "result", result);
+    }
 }

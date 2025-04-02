@@ -57,5 +57,7 @@ public interface SpotAccountAPIService {
 
     JSONObject getTradeFee();
 
+    JSONArray getTradeFeeAll();
 
+    JSONObject getTradeFeeByInstrumentId(String instrumentId);
 }

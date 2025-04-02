@@ -213,6 +213,18 @@ spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
 """
 # result = spotAPI.get_trade_fee()
 
+""" Trade Fee All
+    Limit: 1 requests per 10 seconds
+    GET Request: /api/spot/v3/trade_fee_all
+"""
+# result = spotAPI.get_trade_fee_all()
+
+""" Trade Fee By instrumentId
+    Limit: 1 requests per 10 seconds
+    GET Request: /api/spot/v3/trade_fee_by_instrumentId
+"""
+# result = spotAPI.get_trade_fee_by_instrumentId(instrument_id='BTC-JPY')
+
 """ Public - Trading Pairs
     Limit: 20 requests per 2 seconds
     GET Request: /api/spot/v3/instruments

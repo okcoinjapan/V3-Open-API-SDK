@@ -196,6 +196,24 @@ func TestGetSpotTradeFee(t *testing.T) {
 }
 
 /*
+ Trade Fee
+ Limit: 1 requests per 10 seconds
+ GET Request: /api/spot/v3/trade_fee_all
+*/
+func TestGetSpotTradeFeeAll(t *testing.T) {
+	NewTestClient().GetSpotTradeFeeAll()
+}
+
+/*
+ Trade Fee By InstrumentId
+ Limit: 1 requests per 10 seconds
+ GET Request: /api/spot/v3/trade_fee/{instrument_id}
+*/
+func TestGetSpotTradeFeeByInstrumentId(t *testing.T) {
+	NewTestClient().GetSpotTradeFeeByInstrumentId("BTC-JPY")
+}
+
+/*
  Public - Trading Pairs
  Limit: 20 requests per 2 seconds
  GET Request: /api/spot/v3/instruments
