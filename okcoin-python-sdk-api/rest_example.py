@@ -73,7 +73,7 @@ accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
     Limit: 1 requests per 120 seconds
     POST Request: /api/account/v3/jpywithdrawal
 """
-# result = accountAPI.fiat_withdraw(amount='', trade_pwd='')
+# result = accountAPI.fiat_withdraw(amount='1', trade_pwd='212qA*PmE5Hu%38', bank_card_id='')
 
 """ Fiat Withdrawal History
     Limit: 6 requests per second
@@ -111,6 +111,11 @@ accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
 """
 # result = accountAPI.get_coin_fee('')
 
+""" Query bank card list
+    Limit: Limit: 6 requests per second
+    GET Request: /api/account/v3/bank-card-list
+"""
+result = accountAPI.get_bank_card_list()
 
 ######################
 # Spot Trading API
@@ -261,4 +266,4 @@ spotAPI = spot.SpotAPI(api_key, secret_key, passphrase, False)
 """
 # result = spotAPI.get_kline(instrument_id='BTC-JPY', start='', end='', granularity='300')
 
-print(json.dumps(result))
+print(json.dumps(result, ensure_ascii=False))

@@ -5,7 +5,7 @@ public class JpyWithdraw {
 
     private String trade_pwd;
 
-    private String bank_id;
+    private String bank_card_id;
 
 
     public String getAmount() {
@@ -24,12 +24,11 @@ public class JpyWithdraw {
         this.trade_pwd = trade_pwd;
     }
 
-    public String getBank_id(){
-        return bank_id;
+    public String getBank_card_id() {
+        return bank_card_id;
     }
 
-    public void setBank_id(String bank_id){
-        this.bank_id = bank_id;
+    public void setBank_card_id(String bank_card_id) {
+        this.bank_card_id = bank_card_id;
     }
-
 }

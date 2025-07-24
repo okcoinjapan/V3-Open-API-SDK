@@ -1,5 +1,5 @@
 
-API_URL = 'https://www.okcoin.jp'
+API_URL = 'https://beijing-1-exchange.okdev.work/'
 
 CONTENT_TYPE = 'Content-Type'
 OK_ACCESS_KEY = 'OK-ACCESS-KEY'
@@ -36,6 +36,7 @@ COIN_FEE = '/api/account/v3/withdrawal/fee'
 FIAT_WITHDRAW = '/api/account/v3/jpywithdrawal'
 FIAT_WITHDRAW_RECORD = '/api/account/v3/jpyWithdrawal/history'
 FIAT_TOP_UP_RECORD = '/api/account/v3/jpyDeposit/history'
+BANK_CARD_LIST = '/api/account/v3/bank-card-list'
 
 # spot
 SPOT_ACCOUNT_INFO = '/api/spot/v3/accounts'

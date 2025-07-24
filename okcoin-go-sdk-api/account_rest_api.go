@@ -1,9 +1,9 @@
 package okcoin
 
 /*
- Get Currencies
- Limit: 6 requests per second
- GET Request: /api/account/v3/currencies
+Get Currencies
+Limit: 6 requests per second
+GET Request: /api/account/v3/currencies
 */
 func (client *Client) GetAccountCurrencies() (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -15,9 +15,9 @@ func (client *Client) GetAccountCurrencies() (*[]map[string]interface{}, error) 
 }
 
 /*
- Get Balance
- Limit: 6 requests per second
- GET Request: /api/account/v3/wallet
+Get Balance
+Limit: 6 requests per second
+GET Request: /api/account/v3/wallet
 */
 func (client *Client) GetAccountWallet() (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -29,9 +29,9 @@ func (client *Client) GetAccountWallet() (*[]map[string]interface{}, error) {
 }
 
 /*
- Get Currency
- Limit: 6 requests per second
- GET Request: /api/account/v3/wallet/<currency>
+Get Currency
+Limit: 6 requests per second
+GET Request: /api/account/v3/wallet/<currency>
 */
 func (client *Client) GetAccountWalletByCurrency(currency string) (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -45,9 +45,9 @@ func (client *Client) GetAccountWalletByCurrency(currency string) (*[]map[string
 }
 
 /*
- Get Asset Valuation
- Limit: 1 request per 30 seconds
- GET Request: /api/account/v3/asset-valuation
+Get Asset Valuation
+Limit: 1 request per 30 seconds
+GET Request: /api/account/v3/asset-valuation
 */
 func (client *Client) GetAccountAssetValuation(account_type string) (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -66,18 +66,18 @@ func (client *Client) GetAccountAssetValuation(account_type string) (*[]map[stri
 }
 
 /*
- Fiat Withdrawal
- Limit: 1 requests per 120 seconds
- POST Request: /api/account/v3/jpywithdrawal
+Fiat Withdrawal
+Limit: 1 requests per 120 seconds
+POST Request: /api/account/v3/jpywithdrawal
 */
-func (client *Client) PostAccountFiatWithdrawal(amount, trade_pwd string) (*map[string]interface{}, error) {
+func (client *Client) PostAccountFiatWithdrawal(amount, trade_pwd string, bank_card_id string) (*map[string]interface{}, error) {
 
 	r := map[string]interface{}{}
 
 	body := map[string]interface{}{}
 	body["amount"] = amount
 	body["trade_pwd"] = trade_pwd
-
+	body["bank_card_id"] = bank_card_id
 	if _, err := client.Request(POST, ACCOUNT_FIAT_WITHDRAWAL, body, &r); err != nil {
 		return nil, err
 	}
@@ -86,9 +86,9 @@ func (client *Client) PostAccountFiatWithdrawal(amount, trade_pwd string) (*map[
 }
 
 /*
- Fiat Withdrawal History
- Limit: 6 requests per second
- GET Request: /api/account/v3/jpyWithdrawal/history
+Fiat Withdrawal History
+Limit: 6 requests per second
+GET Request: /api/account/v3/jpyWithdrawal/history
 */
 func (client *Client) GetAccountFiatWithdrawalHistory() (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -100,9 +100,9 @@ func (client *Client) GetAccountFiatWithdrawalHistory() (*[]map[string]interface
 }
 
 /*
- Fiat Deposit History
- Limit: 6 requests per second
- GET Request: /api/account/v3/jpyDeposit/history
+Fiat Deposit History
+Limit: 6 requests per second
+GET Request: /api/account/v3/jpyDeposit/history
 */
 func (client *Client) GetAccountFiatDepositHistory() (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -114,9 +114,9 @@ func (client *Client) GetAccountFiatDepositHistory() (*[]map[string]interface{},
 }
 
 /*
- Withdrawal Fees
- Limit: 6 requests per second
- GET Request: /api/account/v3/withdrawal/fee
+Withdrawal Fees
+Limit: 6 requests per second
+GET Request: /api/account/v3/withdrawal/fee
 */
 func (client *Client) GetAccountWithdrawalFeeByCurrency(currency string) (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -135,9 +135,9 @@ func (client *Client) GetAccountWithdrawalFeeByCurrency(currency string) (*[]map
 }
 
 /*
- Withdrawal History
- Limit: 6 requests per second
- GET Request: /api/account/v3/withdrawal/history
+Withdrawal History
+Limit: 6 requests per second
+GET Request: /api/account/v3/withdrawal/history
 */
 func (client *Client) GetAccountWithdrawalHistory() (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -149,9 +149,9 @@ func (client *Client) GetAccountWithdrawalHistory() (*[]map[string]interface{}, 
 }
 
 /*
- Withdrawal History of a Currency
- Limit: 6 requests per second
- GET Request: /api/account/v3/withdrawal/history/<currency>
+Withdrawal History of a Currency
+Limit: 6 requests per second
+GET Request: /api/account/v3/withdrawal/history/<currency>
 */
 func (client *Client) GetAccountWithdrawalHistoryByCurrency(currency string) (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -165,9 +165,9 @@ func (client *Client) GetAccountWithdrawalHistoryByCurrency(currency string) (*[
 }
 
 /*
- Deposit Address
- Limit: 20 requests per 2 seconds
- GET Request: /api/account/v3/deposit/address
+Deposit Address
+Limit: 20 requests per 2 seconds
+GET Request: /api/account/v3/deposit/address
 */
 func (client *Client) GetAccountDepositAddress(currency string) (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -183,9 +183,9 @@ func (client *Client) GetAccountDepositAddress(currency string) (*[]map[string]i
 }
 
 /*
- Deposit History
- Limit: 6 requests per second
- GET Request: /api/account/v3/deposit/history
+Deposit History
+Limit: 6 requests per second
+GET Request: /api/account/v3/deposit/history
 */
 func (client *Client) GetAccountDepositHistory() (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -197,9 +197,9 @@ func (client *Client) GetAccountDepositHistory() (*[]map[string]interface{}, err
 }
 
 /*
- Deposit History of a Currency
- Limit: 6 requests per second
- GET Request: /api/account/v3/deposit/history/<currency>
+Deposit History of a Currency
+Limit: 6 requests per second
+GET Request: /api/account/v3/deposit/history/<currency>
 */
 func (client *Client) GetAccountDepositHistoryByCurrency(currency string) (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -213,9 +213,9 @@ func (client *Client) GetAccountDepositHistoryByCurrency(currency string) (*[]ma
 }
 
 /*
- Bills Details
- Limit: 20 requests per 2 seconds
- GET Request: /api/account/v3/ledger
+Bills Details
+Limit: 20 requests per 2 seconds
+GET Request: /api/account/v3/ledger
 */
 func (client *Client) GetAccountLeger(optionalParams *map[string]string) (*[]map[string]interface{}, error) {
 	r := []map[string]interface{}{}
@@ -231,9 +231,9 @@ func (client *Client) GetAccountLeger(optionalParams *map[string]string) (*[]map
 }
 
 /*
- Withdrawal
- Limit: 1 requests per 10 seconds
- POST Request: /api/account/v3/withdrawal
+Withdrawal
+Limit: 1 requests per 10 seconds
+POST Request: /api/account/v3/withdrawal
 */
 func (client *Client) PostAccountWithdrawal(
 	currency, destination, amount, to_address, trade_pwd, fee, chain, reason, usage_agreement string) (*map[string]interface{}, error) {
@@ -259,9 +259,9 @@ func (client *Client) PostAccountWithdrawal(
 }
 
 /*
- Funds Transfer
- Limit: 1 request per 2 seconds (per currency)
- POST Request: /api/account/v3/transfer
+Funds Transfer
+Limit: 1 request per 2 seconds (per currency)
+POST Request: /api/account/v3/transfer
 */
 func (client *Client) PostAccountTransfer(
 	currency string, from, to string, amount string) (*map[string]interface{}, error) {
@@ -278,5 +278,19 @@ func (client *Client) PostAccountTransfer(
 		return nil, err
 	}
 
+	return &r, nil
+}
+
+/*
+Bank Card List
+Limit: 6 request per 1 seconds (per currency)
+GET Request: /api/account/v3/bank-card-list
+*/
+func (client *Client) GetBankCardList() (*[]map[string]interface{}, error) {
+	r := []map[string]interface{}{}
+
+	if _, err := client.Request(GET, ACCOUNT_BAKN_CARD_LIST, nil, &r); err != nil {
+		return nil, err
+	}
 	return &r, nil
 }

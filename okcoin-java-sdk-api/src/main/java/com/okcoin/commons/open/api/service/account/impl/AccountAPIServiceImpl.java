@@ -131,4 +131,9 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject getAllAccount(String account_type) {
         return this.client.executeSync(this.api.getAllAccount(account_type));
     }
+
+    @Override
+    public JSONArray getBankCardList() {
+        return this.client.executeSync(this.api.bankCardList());
+    }
 }

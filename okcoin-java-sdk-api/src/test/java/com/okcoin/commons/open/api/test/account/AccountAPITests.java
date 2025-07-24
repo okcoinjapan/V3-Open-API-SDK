@@ -99,6 +99,7 @@ public class AccountAPITests extends AccountAPIBaseTests {
         JpyWithdraw jpyWithdraw = new JpyWithdraw();
         jpyWithdraw.setAmount("10000");
         jpyWithdraw.setTrade_pwd("12345678");
+        jpyWithdraw.setBank_card_id("111");
         JSONObject result = this.accountAPIService.jpyWithdraw(jpyWithdraw);
         this.toResultString(AccountAPITests.LOG, "result", result);
     }
@@ -212,6 +213,17 @@ public class AccountAPITests extends AccountAPIBaseTests {
     @Test
     public void getWithdrawFee() {
         List<WithdrawFee> result = this.accountAPIService.getWithdrawFee("BTC");
+        this.toResultString(AccountAPITests.LOG, "result", result);
+    }
+
+    /**
+     * 获取银行卡列表
+     * 限速规则：6次/s
+     * GET /api/account/v3/bank-card-list
+     */
+    @Test
+    public void getBankCardList(){
+        JSONArray result = this.accountAPIService.getBankCardList();
         this.toResultString(AccountAPITests.LOG, "result", result);
     }
 

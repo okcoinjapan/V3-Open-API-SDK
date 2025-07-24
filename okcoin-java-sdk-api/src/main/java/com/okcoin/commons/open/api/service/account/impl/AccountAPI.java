@@ -83,4 +83,7 @@ public interface AccountAPI {
     @GET("/api/account/v3/asset-valuation")
     Call<JSONObject> getAllAccount(@Query("account_type") String account_type);
 
+    //获取用户银行卡列表 / Get user bank card information
+    @GET("/api/account/v3/bank-card-list")
+    Call<JSONArray> bankCardList();
 }

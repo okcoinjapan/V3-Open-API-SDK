@@ -71,8 +71,8 @@ class AccountAPI(Client):
         return self._request_with_params(POST, COIN_TRANSFER, params)
 
     # fiat withdraw
-    def fiat_withdraw(self, amount, trade_pwd):
-        params = {'amount': amount, 'trade_pwd': trade_pwd}
+    def fiat_withdraw(self, amount, trade_pwd, bank_card_id):
+        params = {'amount': amount, 'trade_pwd': trade_pwd, 'bank_card_id': bank_card_id}
         return self._request_with_params(POST, FIAT_WITHDRAW, params)
 
     # query fiat withdraw history
@@ -82,3 +82,7 @@ class AccountAPI(Client):
     # query fiat deposit history
     def fiat_deposit_history(self):
         return self._request_without_params(GET, FIAT_TOP_UP_RECORD)
+
+    # query bank card list
+    def get_bank_card_list(self):
+        return self._request_without_params(GET, BANK_CARD_LIST)

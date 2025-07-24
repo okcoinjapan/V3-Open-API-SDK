@@ -53,4 +53,5 @@ public interface AccountAPIService {
 
     JSONObject getAllAccount(String account_type);
 
+    JSONArray getBankCardList();
 }
