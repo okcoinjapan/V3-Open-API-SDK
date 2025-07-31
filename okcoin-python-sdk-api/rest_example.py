@@ -73,7 +73,7 @@ accountAPI = account.AccountAPI(api_key, secret_key, passphrase, False)
     Limit: 1 requests per 120 seconds
     POST Request: /api/account/v3/jpywithdrawal
 """
-# result = accountAPI.fiat_withdraw(amount='1', trade_pwd='212qA*PmE5Hu%38', bank_card_id='')
+# result = accountAPI.fiat_withdraw(amount='', trade_pwd='', bank_card_id='')
 
 """ Fiat Withdrawal History
     Limit: 6 requests per second

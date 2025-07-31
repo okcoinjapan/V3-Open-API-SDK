@@ -1,5 +1,5 @@
 
-API_URL = 'https://beijing-1-exchange.okdev.work/'
+API_URL = 'https://www.okcoin.jp'
 
 CONTENT_TYPE = 'Content-Type'
 OK_ACCESS_KEY = 'OK-ACCESS-KEY'
